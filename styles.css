@@ -16,7 +16,7 @@ body {
 }
 
 .question>p,
-.results>p {
+.mark {
 	font-size: 2rem;
 }
 
@@ -88,7 +88,8 @@ input:checked+label::before {
 	width: 900px;
 }
 
-.next-question-btn {
+.next-question-btn,
+.try-again {
 	text-decoration: none;
 	color: white;
 	background-color: gray;

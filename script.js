@@ -3,6 +3,7 @@ const prevQuestionBtn = document.querySelector(".prev-question-btn");
 const checkAnswersBtn = document.querySelector(".check-answers-btn");
 const questionStatus = document.querySelector(".question-status");
 const showResultsBtn = document.querySelector(".show-results-btn");
+const tryAgainBtn = document.querySelector(".try-again");
 const results = document.querySelector(".results");
 
 let currentQuestion = 1;
@@ -78,22 +79,39 @@ showResultsBtn.addEventListener("click", () => {
 		".correct-answer:nth-child(6) tr:nth-child(2) td:nth-child(2)"
 	).innerHTML = "object.addEventListener()";
 
-	calcMark();
+	document.querySelector(".mark").innerHTML =
+		"Ваш результат: \n " + calcMark() + " правильных ответов из 5!";
 
 	function calcMark() {
 		for (let i = 0; i < 4; i++) {
 			let isEverythingCorrect = true;
 			for (let j = 0; j < 4; j++) {
+				console.log(document.forms[i].elements[j].name);
+				console.log(
+					document.querySelector(
+						".correct-answer:nth-child(" +
+							(i + 2) +
+							") tr:nth-child(" +
+							(j + 2) +
+							") td:nth-child(1)"
+					).innerHTML
+				);
+				console.log("---------");
 				if (
-					document.forms[i].elements[j].value === true &&
-					document.forms[i].elements[j].name !=
-						document.querySelector(
-							".correct-answer:nth-child(" +
-								(i + 2) +
-								") tr:nth-child(" +
-								(j + 2) +
-								") td:nth-child(2)"
-						).innerHTML
+					document.querySelector(
+						".correct-answer:nth-child(" +
+							(i + 2) +
+							") tr:nth-child(" +
+							(j + 2) +
+							") td:nth-child(1)"
+					).innerHTML !=
+					document.querySelector(
+						".correct-answer:nth-child(" +
+							(i + 2) +
+							") tr:nth-child(" +
+							(j + 2) +
+							") td:nth-child(2)"
+					).innerHTML
 				) {
 					isEverythingCorrect = false;
 					break;
@@ -112,8 +130,12 @@ showResultsBtn.addEventListener("click", () => {
 		)
 			mark++;
 
-		console.log(mark);
+		return mark;
 	}
+});
+
+tryAgainBtn.addEventListener("click", () => {
+	location.reload();
 });
 
 function buttonColor(currentQuestion) {
