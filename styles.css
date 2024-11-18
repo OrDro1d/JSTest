@@ -8,17 +8,19 @@ body {
 	background-color: #222;
 }
 
-.question {
+.question,
+.results {
 	text-align: center;
 	margin: 200px auto 60px auto;
 	width: 1000px;
 }
 
-.question > p {
+.question>p,
+.results>p {
 	font-size: 2rem;
 }
 
-.question > table {
+.question table {
 	width: 1000px;
 	border: 4px solid yellow;
 	border-radius: 30px;
@@ -26,11 +28,12 @@ body {
 	text-align: left;
 }
 
-.question > table td {
+.question table td,
+.correct-answer table {
 	padding: 20px 50px;
 }
 
-.question > table input {
+.question>table input {
 	position: relative;
 	left: 62px;
 	bottom: 2px;
@@ -54,7 +57,27 @@ body {
 	height: 20px;
 }
 
-input:checked + label::before {
+input {
+	position: relative;
+	left: 100px;
+	opacity: 0;
+}
+
+#avl {
+	border: 3px solid yellow;
+	padding: 20px;
+	width: 1000px;
+	background-color: #222;
+	border-radius: 25px;
+	font-size: 1rem;
+	color: white;
+
+	position: static;
+	left: 0;
+	opacity: 1;
+}
+
+input:checked+label::before {
 	background-color: yellow;
 }
 
@@ -65,22 +88,75 @@ input:checked + label::before {
 	width: 900px;
 }
 
-.navigation > a {
+.next-question-btn {
 	text-decoration: none;
 	color: white;
 	background-color: gray;
 	padding: 30px 50px;
 	text-align: center;
 	width: 200px;
-	border-radius: 30px;
-	box-shadow: 10px 10px 10px #111;
+	border-radius: 20px;
+	box-shadow: 10px 10px 10px #151515;
 }
 
-.navigation > a:active {
+.prev-question-btn {
+	text-decoration: none;
+	color: #999;
+	background-color: #333;
+	padding: 30px 50px;
+	text-align: center;
+	width: 200px;
+	border-radius: 20px;
+	box-shadow: none;
+	cursor: default;
+}
+
+.navigation>a:active {
 	transition: 0.2s;
 	box-shadow: 1px 1px 10px #111;
 }
 
-.body:first-child {
-	color: black;
+.question-status {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	font-size: 1.2rem;
+	padding: 20px 80px;
+	color: #ddd;
+}
+
+.show-results-btn {
+	border: 4px solid yellow;
+	padding: 50px;
+	margin: 100px;
+	width: 800px;
+	background-color: #222;
+	border-radius: 40px;
+	font-size: 1.5rem;
+	color: white;
+	cursor: pointer;
+}
+
+.show-results-btn:hover {
+	background-color: Green;
+	border-color: DarkGreen;
+}
+
+.correct-answer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin: 60px;
+}
+
+.correct-answer table {
+	border: 4px solid yellow;
+	border-radius: 20px;
+}
+
+.correct-answer table th,
+.correct-answer table td {
+	padding: 20px;
+	width: 300px;
 }
